@@ -1,0 +1,72 @@
+
+
+#
+#
+#func _on_TextEdit_gui_input(event):
+#	if event is InputEventMouseButton:
+#		if event.get_button_index() == 2:
+#			following = !following
+#			dragging_start_position = textEdit.get_local_mouse_position()
+#		if rmb:
+#			if event.get_button_index() == BUTTON_WHEEL_UP:
+#				var a = OS.get_window_size()
+#				a.x += 5
+#				a.y += 5
+#				OS.set_window_size(a)
+#			if event.get_button_index() == BUTTON_WHEEL_DOWN:
+#				var a = OS.get_window_size()
+#				a.x -= 5
+#				a.y -= 5
+#				OS.set_window_size(a)
+#				print("DOWN")
+#	if event is InputEventKey:
+#		if event.scancode == KEY_F1 and event.pressed:
+#			OS.set_borderless_window(!OS.get_borderless_window())
+#
+#
+
+#		if popupMenu.visible:
+#			popupMenu.visible = false
+#		else:
+#			$PopupMenu.popup_centered()
+		timerWindow.popup_centered()
+	
+#	if Input.is_action_just_pressed("borderless"):
+##		if OS.is_window_focused():
+##			print("Focus")
+#			if OS.get_borderless_window():
+#				OS.set_borderless_window(false)
+#				pass
+##		else: 
+##			print("Not Focus")
+#			elif !OS.get_borderless_window():
+#				OS.set_borderless_window(true)
+
+
+#
+#	if Input.is_action_just_pressed("enter"):
+#		var txt = $TextEdit.get_line($TextEdit.cursor_get_line()-1)
+#		if txt == "cls":
+#			$TextEdit.text = ""
+
+
+#	if Input.is_action_just_pressed("cmd"):
+#		$TextEdit.set_line(0, "yes")
+#		$TextEdit.update()
+#	if Input.is_action_just_released("cmd"):
+#		$TextEdit.set_line(0, "no")
+#		$TextEdit.update()
+#
+#
+
+#
+#func find():
+#	var line = textEdit.cursor_get_line()
+#	var line_content =  textEdit.get_line(line)
+#	var var_find 
+#	var lines = textEdit.get_line_count()
+#	textEdit.update()
+#	textEdit.cursor_set_line(var_find)	
+#	textEdit.cursor_set_column(line_content.length())
+
+	

@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Comfortaa-VariableFont_wght.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://timeleft.gd" type="Script" id=3]
 [ext_resource path="res://528862__eponn__beep-4.wav" type="AudioStream" id=4]
 [ext_resource path="res://label_timer.gd" type="Script" id=5]
-[ext_resource path="res://new_script.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 2 )
@@ -46,27 +45,6 @@ draw_tabs = true
 highlight_all_occurrences = true
 context_menu_enabled = false
 wrap_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorPicker" type="ColorPicker" parent="."]
-visible = false
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 356.0
-margin_bottom = 482.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
-margin_left = 66.3548
-margin_top = 31.4703
-margin_right = 269.355
-margin_bottom = 165.47
-items = [ "Timer", null, 0, false, false, 0, 0, null, "", false, "BackgroundColor", null, 0, false, false, 1, 0, null, "", false ]
-allow_search = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -165,12 +143,7 @@ __meta__ = {
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource( 6 )
-
-[connection signal="gui_input" from="TextEdit" to="." method="_on_TextEdit_gui_input"]
-[connection signal="color_changed" from="ColorPicker" to="." method="_on_ColorPicker_color_changed"]
-[connection signal="id_pressed" from="PopupMenu" to="." method="_on_PopupMenu_id_pressed"]
+[connection signal="tree_exiting" from="." to="." method="_on_Control_tree_exiting"]
 [connection signal="text_entered" from="WindowDialog/CenterContainer/VBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="WindowDialog/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
