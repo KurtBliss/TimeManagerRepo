@@ -5,6 +5,11 @@ onready var popupMenu = $PopupMenu
 onready var colorPicker = $ColorPicker
 onready var timerWindow = $WindowDialog
 
+var rmb = false
+
+var following = false
+var dragging_start_position = Vector2()
+
 enum {TIMER_PREFIX, TIMER_ENDFIX, TIME_LEFT, TIMER_NODE}
 var timers = []
 var timer_template = {
@@ -14,6 +19,7 @@ var timer_template = {
 }
 
 func _ready():
+	OS.set_borderless_window(true)
 	textEdit.grab_focus()
 	textEdit.cursor_set_column(3)
 
@@ -29,6 +35,20 @@ func _process(delta):
 #			$PopupMenu.popup_centered()
 		timerWindow.popup_centered()
 	
+#	if Input.is_action_just_pressed("borderless"):
+##		if OS.is_window_focused():
+##			print("Focus")
+#			if OS.get_borderless_window():
+#				OS.set_borderless_window(false)
+#				pass
+##		else: 
+##			print("Not Focus")
+#			elif !OS.get_borderless_window():
+#				OS.set_borderless_window(true)
+
+	if following:
+		OS.set_window_position(OS.window_position + textEdit.get_global_mouse_position() - dragging_start_position)
+	
 	var _min = floor($Timer.time_left / 60)
 	var _sec = floor($Timer.time_left - (_min * 60))
 	
@@ -42,6 +62,11 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("d"):
 			check()
+	
+	if Input.is_action_pressed("rmb"):
+		rmb = true
+	else:
+		rmb = false
 
 func check():
 	var offset = 0
@@ -115,5 +140,52 @@ func _on_Button_pressed():
 #	if Input.is_action_just_released("cmd"):
 #		$TextEdit.set_line(0, "no")
 #		$TextEdit.update()
+#
+#
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 2:
+			following = !following
+			dragging_start_position = textEdit.get_local_mouse_position()
+		if rmb:
+			if event.get_button_index() == BUTTON_WHEEL_UP:
+				var a = OS.get_window_size()
+				a.x += 5
+				a.y += 5
+				OS.set_window_size(a)
+			if event.get_button_index() == BUTTON_WHEEL_DOWN:
+				var a = OS.get_window_size()
+				a.x -= 5
+				a.y -= 5
+				OS.set_window_size(a)
+				print("DOWN")
+	if event is InputEventKey:
+		if event.scancode == KEY_F1 and event.pressed:
+			OS.set_borderless_window(!OS.get_borderless_window())
+
+
+#
+#
+#func _on_TextEdit_gui_input(event):
+#	if event is InputEventMouseButton:
+#		if event.get_button_index() == 2:
+#			following = !following
+#			dragging_start_position = textEdit.get_local_mouse_position()
+#		if rmb:
+#			if event.get_button_index() == BUTTON_WHEEL_UP:
+#				var a = OS.get_window_size()
+#				a.x += 5
+#				a.y += 5
+#				OS.set_window_size(a)
+#			if event.get_button_index() == BUTTON_WHEEL_DOWN:
+#				var a = OS.get_window_size()
+#				a.x -= 5
+#				a.y -= 5
+#				OS.set_window_size(a)
+#				print("DOWN")
+#	if event is InputEventKey:
+#		if event.scancode == KEY_F1 and event.pressed:
+#			OS.set_borderless_window(!OS.get_borderless_window())
 #
 #
