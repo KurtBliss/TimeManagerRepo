@@ -1,4 +1,19 @@
-[]
+[x] How to get input type from mapping? -> Get input settings
 
+[x] Map input actions and axis with textures for Keyboard and Gamepad
+
+
+
+[] Make struct for combos
+[] Enum for buttons you can use in Combos
+
+
+[] Current Combo Array that will store list of actions names to an array (should probably be made into a enuM?)
+
+[] Character combos, collection of combos
+
+[] Make actor manager called ComboManager to handle current combo array
+
+[] ComboManager eliminates possible combos while player inerts attacks
 
 
